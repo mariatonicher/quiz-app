@@ -1,0 +1,100 @@
+:root {
+  --primary: #004643;
+  --secondary: #f8c660;
+  --grey-dark: #4a4a4a;
+  --grey-light: #d3d3d3;
+  --grey-background: #eff0f3;
+  --primary-low-opacity: #abd1c6;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  background-color: var(--primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.question-number {
+  color: black;
+}
+
+.container {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  max-width: 500px;
+  gap: 2rem;
+}
+
+.quiz-brand {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--primary);
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  background-color: white;
+  height: 10rem;
+  width: 10rem;
+  border-radius: 50%;
+  text-transform: uppercase;
+}
+
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
+
+form > label {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: white;
+}
+
+form > input::placeholder {
+  font-size: 1rem;
+  color: var(--grey-light);
+}
+
+form > input:focus {
+  border: 1px solid var(--secondary);
+}
+
+form > input {
+  padding: 0.5rem 0.8rem;
+  font-size: 1.2rem;
+  border: 1px solid var(--grey-light);
+  background-color: var(--primary);
+  border-radius: 5px;
+  color: white;
+  outline: none;
+}
+
+.btn-component {
+  width: 100%;
+  margin-top: 1.2rem;
+  color: white;
+  border: none;
+  font-size: 1.2rem;
+  padding: 0.8rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-green {
+  background-color: var(--primary);
+}
+
+.btn-gold {
+  background-color: var(--secondary);
+}

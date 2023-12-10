@@ -1,0 +1,23 @@
+{
+  "name": "quiz-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gustavocr19-developer/quiz-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gustavocr19-developer/quiz-app/issues"
+  },
+  "homepage": "https://github.com/gustavocr19-developer/quiz-app#readme",
+  "devDependencies": {
+    "typescript": "^5.3.3"
+  }
+}
