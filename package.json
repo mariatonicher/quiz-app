@@ -4,20 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "tsc"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/gustavocr19-developer/quiz-app.git"
+    "clean": "rimraf dist/",
+    "copy-files": "copyfiles -u 1 src/*.html src/**/*.html src/*.css src/**/*.css src/**/*.json dist/",
+    "build": "npm run clean && tsc && npm run copy-files",
+    "dev": "npm run build && http-server -c-1 dist/"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/gustavocr19-developer/quiz-app/issues"
-  },
-  "homepage": "https://github.com/gustavocr19-developer/quiz-app#readme",
   "devDependencies": {
+    "http-server": "^14.1.1",
+    "copyfiles": "^2.4.1",
+    "rimraf": "^5.0.5",
     "typescript": "^5.3.3"
   }
 }
