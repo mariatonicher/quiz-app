@@ -1,21 +1,25 @@
-const callPage = (pageName: string): Promise<string> => {
-  return fetch(`pages/${pageName}.html`).then((resp) => resp.text());
+const callPage = async (pageName: string): Promise<string> => {
+  const resp = await fetch(`pages/${pageName}.html`);
+  return await resp.text(); //tech interagir com api de forma asynchron
 };
 
-const renderPage = (pageName: string) => {
+function renderPage(pageName: string) {
   callPage(pageName).then((html) => {
+    //.then, promise lidar com resolução
+    //callback function
     const rootElem = document.getElementById("root") as HTMLElement;
     rootElem.innerHTML = html;
 
-    const formElem = document.getElementById("form-start") as HTMLFormElement;
-    formElem.addEventListener("submit", function (event): void {
+    const formElem = document.getElementById("form-start") as HTMLFormElement; //casting, forçando, para nao fazer o if
+    console.log(formElem);
+
+    formElem.addEventListener("submit", async function (event) {
       event.preventDefault(); // se não começa do zero, ao refrescar a pagina
 
       const inputElem = document.getElementById(
         "input-name"
       ) as HTMLInputElement;
       const inputValue: string = inputElem.value;
-
       if (inputValue === "") {
         alert("Please fill in the form."); //https://www.quora.com/How-do-I-make-a-page-change-with-JavaScript-once-a-form-has-been-submitted
       } else {
@@ -24,11 +28,15 @@ const renderPage = (pageName: string) => {
           "white";
 
         onsubmit = (event) => {};
-        renderPage("quiz"); //window.location.href = "quiz.html"; renderiza/ recarrega dentro dapagina atual
+
+        callPage("quiz").then((html) => {
+          const rootElem = document.getElementById("root") as HTMLElement;
+          rootElem.innerHTML = html;
+        }); // renderiza/ recarrega dentro dapagina atual
       }
     });
   });
-};
+}
 
 renderPage("start"); // trocar pagina
 
