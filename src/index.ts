@@ -1,23 +1,33 @@
-const renderPage = (pageName: string): void => {
-  fetch(`pages/${pageName}.html`)
-    .then((resp) => resp.text())
-    .then((html) => {
-      const rootElem = document.getElementById("root") as HTMLElement;
+const callPage = (pageName: string): Promise<string> => {
+  return fetch(`pages/${pageName}.html`).then((resp) => resp.text());
+};
 
-      rootElem.innerHTML = html;
+const renderPage = (pageName: string) => {
+  callPage(pageName).then((html) => {
+    const rootElem = document.getElementById("root") as HTMLElement;
+    rootElem.innerHTML = html;
 
-      const formElem = document.getElementById("form-start") as HTMLFormElement;
-      formElem.addEventListener("submit", function (event) {
-        event.preventDefault(); // se não começa do zero, ao refrescar a pagina
-        const inputElem = document.getElementById(
-          "input-name"
-        ) as HTMLInputElement;
-        const inputValue: string = inputElem.value;
+    const formElem = document.getElementById("form-start") as HTMLFormElement;
+    formElem.addEventListener("submit", function (event): void {
+      event.preventDefault(); // se não começa do zero, ao refrescar a pagina
+
+      const inputElem = document.getElementById(
+        "input-name"
+      ) as HTMLInputElement;
+      const inputValue: string = inputElem.value;
+
+      if (inputValue === "") {
+        alert("Please fill in the form."); //https://www.quora.com/How-do-I-make-a-page-change-with-JavaScript-once-a-form-has-been-submitted
+      } else {
         localStorage.setItem("name", inputValue);
+        document.getElementsByTagName("body")[0].style.backgroundColor =
+          "white";
 
-        console.log("teste");
-      });
+        onsubmit = (event) => {};
+        renderPage("quiz"); //window.location.href = "quiz.html"; renderiza/ recarrega dentro dapagina atual
+      }
     });
+  });
 };
 
 renderPage("start"); // trocar pagina
