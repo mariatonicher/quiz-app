@@ -91,11 +91,11 @@ function renderPage(pageName: string) {
                       } else {
                         alert("Resposta incorreta");
                       }
-                      localStorage.setItem(
+                      /*  localStorage.setItem(
                         "userAnswer",
                         JSON.stringify(isCorrect)
-                      );
-                      // Tarefa 7
+                      ); */
+                      // Tarefa 7 -
                       callPage("leaderboard").then((html) => {
                         const rootElem = document.getElementById(
                           "root"
@@ -104,6 +104,10 @@ function renderPage(pageName: string) {
                         document.getElementsByTagName(
                           "body"
                         )[0].style.backgroundColor = "grey";
+                        localStorage.setItem(
+                          "userAnswer",
+                          JSON.stringify(isCorrect)
+                        );
                       });
                     });
                   });
